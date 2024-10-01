@@ -3,24 +3,34 @@
 # os números primos. Serão avaliados o funcionamento, o estilo e o número de testes (divisões)
 # executados.
 
-num = int(input('Digite um numero: '))
+num = int(input('Digite um número: '))
 primos = [2]
-for number in range (3, num+1, 2):
-        primos.append(number)
+for number in range(3, num + 1, 2):
+    primos.append(number)
 
 div = 0
+primos_validados = []  # Nova lista para armazenar os números primos
+
 for number in primos:
-    if number > 2:
-        for cada in range(2, int(number**0.5)+1):
-            div += 1
-            if number % cada == 0:
-                 primos.remove(number)
+    if number == 2:
+        primos_validados.append(number)
+        continue
 
+    eh_primo = True
+    for cada in range(2, int(number**0.5) + 1):
+        div += 1
+        if number % cada == 0:
+            eh_primo = False
+            break
 
-print(f'O numeros primos ente 1 e {num} são: ')
+    if eh_primo:
+        primos_validados.append(number)
 
-for cada in primos:
-    if cada == primos[-1]:
+print(f'Os números primos entre 1 e {num} são: ', end="")
+
+# Imprime os primos formatados corretamente
+for i, cada in enumerate(primos_validados):
+    if i == len(primos_validados) - 1:
         print(cada)
     else:
         print(cada, end=', ')
