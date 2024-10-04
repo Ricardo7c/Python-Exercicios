@@ -15,10 +15,6 @@ def numeros(x):
             print(cada, end='')
 
 
-
-
-
-
 num = int(input('Digite um numero: '))
 
 numeros(num)
